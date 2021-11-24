@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color Fliper</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #mainContent{
+            background-color: Red;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+        }
+        #textDiv{
+            background-color: #222222;
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 30px;
+            font-weight: 700;
+        }
+        #btnDiv{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+        button{
+            background-color: transparent;
+            outline: none;
+            border:1px solid blue ;
+            border-radius: 5px;
+            font-size: 20px;
+        }        
+        button:hover{
+            background-color: #fff;
+        }
+        #colorName{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainContent">
+        <div id="textDiv">
+            <span id="bgcolortext">Background Color : </span>
+            <span id="colorName">Red</span>
+        </div>
+        <div id="btnDiv">
+            <button type="submit" onclick="backgroundChange()">CLICK ME</button>
+    </div>
+</div>
+</body>
+<script>
+    
+    const arr = ["Red","Yellow","Green","Gray","Purple","Gold"];
+    const colorName = document.getElementById("colorName");
+    const bodyColor = document.getElementById("mainContent");
+
+    function getRandomNumber(min , max) {
+        let step1 = max - min + 1;
+        let step2 = Math.random()*step1;
+        let step3 = Math.floor(step2) + min;
+
+        return step3;
+    }
+    function backgroundChange() {
+        let index = getRandomNumber(0, arr.length-1);
+        colorName.innerText = arr[index];
+        bodyColor.style.backgroundColor = arr[index];
+    }
+</script>
+</html>
